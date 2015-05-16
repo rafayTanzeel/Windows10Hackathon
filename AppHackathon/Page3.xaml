@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="AppHackathon.Page3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppHackathon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Name="TimerName" HorizontalAlignment="Center" Margin="65,81,53,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="82" Width="242"/>
+        <TextBox x:Name="Notes" HorizontalAlignment="Center" Margin="65,168,53,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="402" Width="242"/>
+        <Button x:Name="MainButton" Content="Main" HorizontalAlignment="Left" Margin="65,20,0,0" VerticalAlignment="Top" Click="MainButton_Click"/>
+        <Button x:Name="HistoryButton" Content="History" HorizontalAlignment="Center" Margin="146.5,20,146.5,0" VerticalAlignment="Top" Click="HistoryButton_Click"/>
+        <Button x:Name="NotesButton" Content="Notes" HorizontalAlignment="Right" Margin="0,20,53,0" VerticalAlignment="Top" Click="NotesButton_Click"/>
+
+    </Grid>
+</Page>
