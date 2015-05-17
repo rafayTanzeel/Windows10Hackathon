@@ -11,8 +11,8 @@
         <TextBlock x:Name="TimerName" HorizontalAlignment="Center" Margin="65,81,53,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="82" Width="242"/>
         <TextBox x:Name="Notes" HorizontalAlignment="Center" Margin="65,168,53,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="402" Width="242"/>
         <Button x:Name="MainButton" Content="Main" HorizontalAlignment="Left" Margin="65,20,0,0" VerticalAlignment="Top" Click="MainButton_Click"/>
-        <Button x:Name="HistoryButton" Content="History" HorizontalAlignment="Center" Margin="146.5,20,146.5,0" VerticalAlignment="Top" Click="HistoryButton_Click"/>
-        <Button x:Name="NotesButton" Content="Notes" HorizontalAlignment="Right" Margin="0,20,53,0" VerticalAlignment="Top" Click="NotesButton_Click"/>
+        <Button x:Name="HistoryButton" Content="Task List" HorizontalAlignment="Center" Margin="147,20,140,0" VerticalAlignment="Top" Click="HistoryButton_Click" Width="73"/>
+        <Button x:Name="NotesButton" Content="Data" HorizontalAlignment="Right" Margin="0,20,53,0" VerticalAlignment="Top" Click="NotesButton_Click"/>
 
     </Grid>
 </Page>

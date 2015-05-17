@@ -8,13 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="OKButton" Content="OK" HorizontalAlignment="Left" Margin="45,495,0,0" VerticalAlignment="Top" Height="95" Width="105"/>
+        <Button x:Name="OKButton" Content="OK" HorizontalAlignment="Left" Margin="45,495,0,0" VerticalAlignment="Top" Height="95" Width="105" Click="OKButton_Click"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="205,495,0,0" VerticalAlignment="Top" Height="95" Width="105"/>
-        <TextBox x:Name="NAME" HorizontalAlignment="Left" Margin="45,45,0,0" TextWrapping="Wrap" Text="NAME:" VerticalAlignment="Top" Width="265"/>
-        <TextBox x:Name="TYPE" HorizontalAlignment="Left" Margin="45,120,0,0" TextWrapping="Wrap" Text="TYPE:" VerticalAlignment="Top" Width="265"/>
-        <TextBox x:Name="DURATION" HorizontalAlignment="Left" Margin="45,203,0,0" TextWrapping="Wrap" Text="DURATION:" VerticalAlignment="Top" Width="265"/>
-        <TextBox x:Name="NOTES" HorizontalAlignment="Left" Margin="45,285,0,0" TextWrapping="Wrap" Text="NOTES:" VerticalAlignment="Top" Width="265"/>
-        <TextBox x:Name="DUE" HorizontalAlignment="Left" Margin="45,358,0,0" TextWrapping="Wrap" Text="DUE:" VerticalAlignment="Top" Width="265"/>
+        <TextBox x:Name="NAME" HorizontalAlignment="Left" Margin="45,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="NAME"/>
+        <TextBox x:Name="TYPE" HorizontalAlignment="Left" Margin="45,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="TYPE"/>
+        <TextBox x:Name="BREAKLENGTH" HorizontalAlignment="Left" Margin="45,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="BREAK LENGTH"/>
+        <TextBox x:Name="NOTES" HorizontalAlignment="Left" Margin="45,275,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="NOTES" Height="110"/>
+        <TextBox x:Name="DUE" HorizontalAlignment="Left" Margin="45,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="DUE"/>
+        <TextBox x:Name="DURATION" HorizontalAlignment="Left" Margin="45,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="265" PlaceholderText="TASK DURATION"/>
 
     </Grid>
 </Page>

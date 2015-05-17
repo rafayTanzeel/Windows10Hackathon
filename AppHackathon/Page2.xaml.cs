@@ -25,6 +25,16 @@ namespace AppHackathon
         public Page2()
         {
             this.InitializeComponent();
+
+            for(int i = 0; i<QueueStorage.que.Count(); i++)
+            {
+                Storage x = QueueStorage.que.Dequeue();
+                taskList.Items.Add("Name: " + x.name + " --- Type: " + x.type);
+                QueueStorage.que.Enqueue(x);
+
+            }
+
+
         }
 
         private void MainButton_Click(object sender, RoutedEventArgs e)
@@ -33,6 +43,9 @@ namespace AppHackathon
             {
                 this.Frame.Navigate(typeof(MainPage));
             }
+
+
+
         }
 
         private void HistoryButton_Click(object sender, RoutedEventArgs e)

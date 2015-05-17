@@ -26,5 +26,18 @@ namespace AppHackathon
         {
             this.InitializeComponent();
         }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            QueueStorage.que.Enqueue(new Storage(NAME.Text, TYPE.Text, Convert.ToInt32(BREAKLENGTH.Text), NOTES.Text, DUE.Text, Convert.ToInt32(DURATION.Text)));
+            Frame.Navigate(typeof(MainPage));
+        }
     }
+
+
+
+   
+
+
+
 }

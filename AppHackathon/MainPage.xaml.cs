@@ -26,6 +26,9 @@ namespace AppHackathon
         private int timerVal;
         private int breakLimit;
         private int breakMax;
+        private int MaxDuration;
+
+        public object NavigationContext { get; private set; }
 
         public MainPage()
         {
@@ -34,9 +37,28 @@ namespace AppHackathon
             t.Tick += T_Tick;
             t.Interval = new TimeSpan(0, 0, 1);
             timerVal = 0;
-
-            breakMax = 5;
+            MaxDuration = 0;
+            breakMax = 0;
             breakLimit = breakMax;
+            clearTask.IsEnabled = false;
+            toggleTimer.IsEnabled = false;
+            taskNameBox.IsReadOnly = true;
+            taskNotesBox.IsReadOnly = true;
+            taskTypeBox.IsReadOnly = true;
+            if (QueueStorage.que.Count() > 0)
+            {
+                clearTask.IsEnabled = true;
+                toggleTimer.IsEnabled = true;
+                Storage x = QueueStorage.que.Peek();
+                MaxDuration = x.maxDuration; //activity
+                breakMax = x.duration; //break
+                breakLimit = breakMax;
+                taskNameBox.Text = x.name;
+                taskTypeBox.Text = x.type;
+                taskNotesBox.Text = x.notes;
+            }
+
+
         }
 
         
@@ -47,7 +69,7 @@ namespace AppHackathon
 
         private void AddTime_Click_1(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(NewTask));
         }
 
         private void MainButton_Click(object sender, RoutedEventArgs e)
@@ -91,8 +113,14 @@ namespace AppHackathon
         private void T_Tick(object sender, object e)
         {
             
-            timerVal += 1;
+            timerVal ++;
             breakLimit--;
+            if(timerVal == MaxDuration)
+            {
+                QueueStorage.que.Dequeue();
+                t.Stop();
+
+            }
             if ( breakLimit == 0)
             {
                 t.Stop();
@@ -123,6 +151,7 @@ namespace AppHackathon
                 if (breakLimit == 0)
                 {
                     breakLimit = timerVal;
+
                 }
                 StartTimer();
             }
@@ -133,5 +162,34 @@ namespace AppHackathon
 
 
         }
+
+        private void clearTask_Click(object sender, RoutedEventArgs e)
+        {
+            QueueStorage.que.Dequeue();
+            t.Stop();
+            taskNameBox.Text = "";
+            taskNotesBox.Text = "";
+            taskTypeBox.Text = "";
+            Timer.Text = "00:00:00";
+            BreakTimer.Text = "00:00:00";
+        }
+
+
+
+      
+        /* private async Task InstallVoiceCommandsAsync()
+         {
+             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Cortana.xml"));
+             await VoiceCommandManager.InstallCommandSetsFromStorageFileAsync(storageFile);
+         }*/
+
+
+
+
     }
+
+
+
 }
+
+

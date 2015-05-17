@@ -7,6 +7,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,7 +48,7 @@ namespace AppHackathon
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -55,6 +57,27 @@ namespace AppHackathon
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            try
+            {
+                // Install the main VCD. Since there's no simple way to test that the VCD has been imported, or that it's your most recent
+                // version, it's not unreasonable to do this upon app load.
+                StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"cortana.xml");
+
+                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
+
+                // Update phrase list.
+                /*ViewModel.ViewModelLocator locator = App.Current.Resources["ViewModelLocator"] as ViewModel.ViewModelLocator;
+                if (locator != null)
+                {
+                    await locator.TripViewModel.UpdateDestinationPhraseList();
+                }*/
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
+            }
+
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -84,6 +107,9 @@ namespace AppHackathon
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
             // Ensure the current window is active
+
+
+
             Window.Current.Activate();
         }
 
@@ -110,5 +136,32 @@ namespace AppHackathon
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            Frame RootFrame = Window.Current.Content as Frame;
+            if (args.Kind == ActivationKind.VoiceCommand)
+            {
+                var commandArgs = args as VoiceCommandActivatedEventArgs;
+
+                if (commandArgs != null)
+                {
+                    SpeechRecognitionResult speechRecognitionResult = commandArgs.Result;
+
+                    var voiceCommandName = speechRecognitionResult.RulePath[0];
+                    var textSpoken = speechRecognitionResult.Text;
+
+                    if (textSpoken.ToLower().Contains("study"))
+                    {
+                        RootFrame.Navigate(typeof(NewTask));
+                    }
+
+                }
+            }
+
+            Window.Current.Activate();
+        }
+
     }
 }

@@ -8,15 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="Info" HorizontalAlignment="Center" Margin="65,200,53,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="265" Width="242"/>
-        <Button x:Name="AddTime" Content="ADD" HorizontalAlignment="Left" Margin="65,506,0,0" VerticalAlignment="Top" Height="105" Width="95" FontSize="26.667" Click="AddTime_Click_1"/>
+        <Button x:Name="AddTime" Content="ADD" HorizontalAlignment="Left" Margin="23,506,0,0" VerticalAlignment="Top" Height="105" Width="95" FontSize="26.667" Click="AddTime_Click_1"/>
         <TextBlock x:Name="Timer" HorizontalAlignment="Center" Margin="65,57,53,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="242" Height="73" FontSize="53.333" TextAlignment="Center"/>
         <TextBlock x:Name="BreakTimer" HorizontalAlignment="Center" Margin="65,130,53,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="242" Height="65" FontSize="34.667" TextAlignment="Center"/>
         <Button x:Name="MainButton" Content="Main" HorizontalAlignment="Left" Margin="65,20,0,0" VerticalAlignment="Top" Click="MainButton_Click"/>
-        <Button x:Name="HistoryButton" Content="History" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Click="HistoryButton_Click"/>
-        <Button x:Name="NotesButton" Content="Notes" HorizontalAlignment="Right" Margin="0,20,53,0" VerticalAlignment="Top" Click="NotesButton_Click"/>
-        <Button x:Name="toggleTimer" Content="START" HorizontalAlignment="Right" Margin="0,506,53,0" VerticalAlignment="Top" Height="105" Width="95
+        <Button x:Name="HistoryButton" Content="Task List" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Click="HistoryButton_Click"/>
+        <Button x:Name="NotesButton" Content="Data" HorizontalAlignment="Right" Margin="0,20,53,0" VerticalAlignment="Top" Click="NotesButton_Click"/>
+        <Button x:Name="toggleTimer" Content="START" HorizontalAlignment="Right" Margin="0,506,125,0" VerticalAlignment="Top" Height="105" Width="95
                 " FontSize="26.667" Click="toggleTimer_Click_1"/>
+        <Button x:Name="clearTask" Content="CLEAR" HorizontalAlignment="Right" Margin="0,506,11,0" VerticalAlignment="Top" Height="105" Width="95                 " FontSize="26.667" Click="clearTask_Click"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="23,237,0,0" TextWrapping="Wrap" Text="Task Type:" VerticalAlignment="Top" FontSize="21.333"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="23,276,0,0" TextWrapping="Wrap" Text="Task Notes:" VerticalAlignment="Top" FontSize="21.333"/>
+        <TextBlock x:Name="taskName" HorizontalAlignment="Left" Margin="23,195,0,0" TextWrapping="Wrap" Text="Task Name:" VerticalAlignment="Top" FontSize="21.333"/>
+        <TextBox x:Name="taskNameBox" HorizontalAlignment="Left" Margin="147,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.493,0.469" Width="160"/>
+        <TextBox x:Name="taskTypeBox" HorizontalAlignment="Left" Margin="140,237,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.493,0.469" Width="167"/>
+        <TextBox x:Name="taskNotesBox" HorizontalAlignment="Left" Margin="23,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.493,0.469" Width="284" Height="166"/>
 
     </Grid>
 </Page>
